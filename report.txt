@@ -1,0 +1,989 @@
+Found 141 non-localized strings:
+
+1. lib\features\Account\presentation\pages\account_screen.dart:44 - "My Account"
+Context:
+  43:                   Text(
+> 44:                     "My Account",
+  45:                     style: TextStyle(
+  46:                       color: AppColors.whiteColor,
+
+2. lib\features\Account\presentation\widgets\change_language_widget.dart:23 - "Change Language"
+Context:
+  22:           Text(
+> 23:             "Change Language",
+  24:             style: const TextStyle(
+  25:               fontSize: 18.0,
+
+3. lib\features\Account\presentation\pages\privacy_policy_screen.dart:51 - "Privacy Policy"
+Context:
+  50:       appBar: AppBar(
+> 51:         title: Text("Privacy Policy"),
+  52:       ),
+  53:       body: isLoading
+
+4. lib\features\Account\presentation\widgets\custom_subscribe_container.dart:32 - "Upgrade To Permium"
+Context:
+  31:                   Text(
+> 32:                  "Upgrade To Permium",
+  33:                     style: TextStyle(
+  34:                         color: AppColors.whiteColor,
+
+5. lib\features\Account\presentation\widgets\custom_subscribe_container.dart:41 - "Enjoy Posting Scheduling"
+Context:
+  40:                   Text(
+> 41:                   "Enjoy Posting Scheduling",
+  42:                     style:
+  43:                         TextStyle(color: AppColors.whiteColor, fontSize: 10),
+
+6. lib\features\Account\presentation\widgets\delete_account_dialog.dart:17 - "Delete My Account"
+Context:
+  16:       backgroundColor: AppColors.whiteColor,
+> 17:       title: Text("Delete My Account"),
+  18:       content: Text("Are you sure you want to delete your account?"),
+  19:       actions: [
+
+7. lib\features\Account\presentation\widgets\delete_account_dialog.dart:18 - "Are you sure you want to delete your account?"
+Context:
+  17:       title: Text("Delete My Account"),
+> 18:       content: Text("Are you sure you want to delete your account?"),
+  19:       actions: [
+  20:         Row(
+
+8. lib\features\Account\presentation\widgets\delete_account_dialog.dart:65 - "Type Your Password"
+Context:
+  64:     return AlertDialog.adaptive(
+> 65:         title: Text("Type Your Password"),
+  66:         content: Material(
+  67:           color: Colors.transparent,
+
+9. lib\features\Account\presentation\widgets\other_settings_widget.dart:39 - "Share App"
+Context:
+  38:                   leadingIconPath: "assets/svg/share.svg",
+> 39:                   title: "Share App",
+  40:                   onTap: () {
+  41:                     Platform.isIOS
+
+10. lib\features\Account\presentation\widgets\other_settings_widget.dart:53 - "Rate The App"
+Context:
+  52:                     leadingIconPath: "assets/svg/rate.svg",
+> 53:                     title: "Rate The App",
+  54:                     onTap: () async {
+  55:                       await InAppReview.instance
+
+11. lib\features\Account\presentation\widgets\other_settings_widget.dart:63 - "Privacy Policy"
+Context:
+  62:                   leadingIconPath: "assets/svg/privacy_policy.svg",
+> 63:                   title: "Privacy Policy",
+  64:                   onTap: () {
+  65:                     //show it in web view
+
+12. lib\features\Account\presentation\widgets\other_settings_widget.dart:76 - "Terms Of Use"
+Context:
+  75:                   leadingIconPath: "assets/svg/terms.svg",
+> 76:                   title: "Terms Of Use",
+  77:                   onTap: () {
+  78:                     //show it in web view
+
+13. lib\features\Account\presentation\widgets\other_settings_widget.dart:130 - "Delete Account"
+Context:
+  129:                         },
+> 130:                         title: "Delete Account",
+  131:                       );
+  132:                     } else {
+
+14. lib\features\auth\presentation\pages\login_screen.dart:62 - "Please enter your email first"
+Context:
+  61:         const SnackBar(
+> 62:           content: Text('Please enter your email first'),
+  63:         ),
+  64:       );
+
+15. lib\features\auth\presentation\pages\login_screen.dart:82 - "An error occurred"
+Context:
+  81:               SnackBar(
+> 82:                   content: Text(state.errorMessage ?? 'An error occurred')),
+  83:             );
+  84:           } else if (state.status == AuthStatus.resetPasswordSuccess) {
+
+16. lib\features\auth\presentation\pages\login_screen.dart:88 - "Password reset email sent. Please check your inbox."
+Context:
+  87:                 content:
+> 88:                     Text('Password reset email sent. Please check your inbox.'),
+  89:               ),
+  90:             );
+
+17. lib\features\auth\presentation\pages\login_screen.dart:114 - "Welcome Back!"
+Context:
+  113:                   const Text(
+> 114:                     'Welcome Back!',
+  115:                     style: TextStyle(
+  116:                       fontSize: 24,
+
+18. lib\features\auth\presentation\pages\login_screen.dart:129 - "Please enter your email"
+Context:
+  128:                       if (value == null || value.isEmpty) {
+> 129:                         return 'Please enter your email';
+  130:                       }
+  131:                       if (!value.contains('@')) {
+
+19. lib\features\auth\presentation\pages\login_screen.dart:132 - "Please enter a valid email"
+Context:
+  131:                       if (!value.contains('@')) {
+> 132:                         return 'Please enter a valid email';
+  133:                       }
+  134:                       return null;
+
+20. lib\features\auth\presentation\pages\login_screen.dart:153 - "Please enter your password"
+Context:
+  152:                       if (value == null || value.isEmpty) {
+> 153:                         return 'Please enter your password';
+  154:                       }
+  155:                       if (value.length < 6) {
+
+21. lib\features\auth\presentation\pages\login_screen.dart:156 - "Password must be at least 6 characters"
+Context:
+  155:                       if (value.length < 6) {
+> 156:                         return 'Password must be at least 6 characters';
+  157:                       }
+  158:                       return null;
+
+22. lib\features\auth\presentation\pages\login_screen.dart:166 - "Forgot Password?"
+Context:
+  165:                       onPressed: _handleForgotPassword,
+> 166:                       child: const Text('Forgot Password?'),
+  167:                     ),
+  168:                   ),
+
+23. lib\features\auth\presentation\pages\login_screen.dart:232 - "Don't have an account?"
+Context:
+  231:                     children: [
+> 232:                       const Text("Don't have an account?"),
+  233:                       TextButton(
+  234:                         onPressed: () {
+
+24. lib\features\auth\presentation\pages\login_screen.dart:242 - "Sign Up"
+Context:
+  241:                         },
+> 242:                         child: const Text('Sign Up'),
+  243:                       ),
+  244:                     ],
+
+25. lib\features\auth\repo\linked_in_auth.dart:65 - "Authentication failed"
+Context:
+  64:             completer.completeError(AuthException(
+> 65:               message: errorDescription ?? 'Authentication failed',
+  66:             ));
+  67:           } else if (accessToken != null) {
+
+26. lib\features\auth\repo\linked_in_auth.dart:74 - "No access token received"
+Context:
+  73:             completer.completeError(AuthException(
+> 74:               message: 'No access token received',
+  75:             ));
+  76:           }
+
+27. lib\features\auth\repo\linked_in_auth.dart:84 - "launch error: Cannot launch URL: {param0}"
+Context:
+  83:       if (!canLaunch) {
+  84:         logger.d("launch error: Cannot launch URL: $url");
+  85:         throw AuthException(message: 'Could not launch browser');
+  86:       }
+
+28. lib\features\auth\repo\linked_in_auth.dart:85 - "Could not launch browser"
+Context:
+  84:         logger.d("launch error: Cannot launch URL: $url");
+> 85:         throw AuthException(message: 'Could not launch browser');
+  86:       }
+  87: 
+
+29. lib\features\auth\repo\linked_in_auth.dart:121 - "Token exchange failed: {param0}"
+Context:
+  120:         throw AuthException(
+  121:           message: 'Token exchange failed: ${response.body}',
+  122:         );
+  123:       }
+
+30. lib\features\auth\repo\linked_in_auth.dart:174 - "Token exchange failed: {param0}"
+Context:
+  173:         throw AuthException(
+  174:           message: 'Token exchange failed: ${response.body}',
+  175:         );
+  176:       }
+
+31. lib\features\auth\presentation\pages\signup_screen.dart:74 - "An error occurred"
+Context:
+  73:               SnackBar(
+> 74:                   content: Text(state.errorMessage ?? 'An error occurred')),
+  75:             );
+  76:           } else if (state.status == AuthStatus.authenticated) {
+
+32. lib\features\auth\presentation\pages\signup_screen.dart:92 - "Create Account"
+Context:
+  91:                   const Text(
+> 92:                     'Create Account',
+  93:                     style: TextStyle(
+  94:                       fontSize: 24,
+
+33. lib\features\auth\presentation\pages\signup_screen.dart:102 - "Full Name"
+Context:
+  101:                     controller: _nameController,
+> 102:                     hintText: 'Full Name',
+  103:                     prefixIcon: Icons.person_outline,
+  104:                     validator: (value) {
+
+34. lib\features\auth\presentation\pages\signup_screen.dart:106 - "Please enter your name"
+Context:
+  105:                       if (value == null || value.isEmpty) {
+> 106:                         return 'Please enter your name';
+  107:                       }
+  108:                       return null;
+
+35. lib\features\auth\presentation\pages\signup_screen.dart:119 - "Please enter your email"
+Context:
+  118:                       if (value == null || value.isEmpty) {
+> 119:                         return 'Please enter your email';
+  120:                       }
+  121:                       if (!value.contains('@')) {
+
+36. lib\features\auth\presentation\pages\signup_screen.dart:122 - "Please enter a valid email"
+Context:
+  121:                       if (!value.contains('@')) {
+> 122:                         return 'Please enter a valid email';
+  123:                       }
+  124:                       return null;
+
+37. lib\features\auth\presentation\pages\signup_screen.dart:143 - "Please enter your password"
+Context:
+  142:                       if (value == null || value.isEmpty) {
+> 143:                         return 'Please enter your password';
+  144:                       }
+  145:                       if (value.length < 6) {
+
+38. lib\features\auth\presentation\pages\signup_screen.dart:146 - "Password must be at least 6 characters"
+Context:
+  145:                       if (value.length < 6) {
+> 146:                         return 'Password must be at least 6 characters';
+  147:                       }
+  148:                       return null;
+
+39. lib\features\auth\presentation\pages\signup_screen.dart:154 - "Confirm Password"
+Context:
+  153:                     controller: _confirmPasswordController,
+> 154:                     hintText: 'Confirm Password',
+  155:                     prefixIcon: Icons.lock_outline,
+  156:                     obscureText: !_isConfirmPasswordVisible,
+
+40. lib\features\auth\presentation\pages\signup_screen.dart:167 - "Please confirm your password"
+Context:
+  166:                       if (value == null || value.isEmpty) {
+> 167:                         return 'Please confirm your password';
+  168:                       }
+  169:                       if (value != _passwordController.text) {
+
+41. lib\features\auth\presentation\pages\signup_screen.dart:170 - "Passwords do not match"
+Context:
+  169:                       if (value != _passwordController.text) {
+> 170:                         return 'Passwords do not match';
+  171:                       }
+  172:                       return null;
+
+42. lib\features\auth\presentation\pages\signup_screen.dart:200 - "Sign Up"
+Context:
+  199:                             : const Text(
+> 200:                                 'Sign Up',
+  201:                                 style: TextStyle(
+  202:                                   fontSize: 16,
+
+43. lib\features\auth\presentation\pages\signup_screen.dart:230 - "Already have an account?"
+Context:
+  229:                     children: [
+> 230:                       const Text('Already have an account?'),
+  231:                       TextButton(
+  232:                         onPressed: () {
+
+44. lib\features\BottomNavBar\presentation\views\dashboard_page.dart:119 - "Your Post4Me Analytics"
+Context:
+  118:                           const Text(
+> 119:                             "Your Post4Me Analytics",
+  120:                             style: TextStyle(
+  121:                               color: Colors.white,
+
+45. lib\features\BottomNavBar\presentation\views\dashboard_page.dart:158 - "Total Posts"
+Context:
+  157:                   return _analyticsCard(
+> 158:                     "Total Posts",
+  159:                     state is DashboardDataLoaded ? state.stats.first : "0",
+  160:                     Icons.post_add,
+
+46. lib\features\BottomNavBar\presentation\views\dashboard_page.dart:173 - "This Month"
+Context:
+  172:                   return _analyticsCard(
+> 173:                     "This Month",
+  174:                     state is DashboardDataLoaded ? state.stats[1] : "0",
+  175:                     Icons.calendar_today,
+
+47. lib\features\BottomNavBar\presentation\views\dashboard_page.dart:254 - "Free Post Limit"
+Context:
+  253:                   Text(
+> 254:                     "Free Post Limit",
+  255:                     style: TextStyle(
+  256:                       color: Colors.grey[800],
+
+48. lib\features\BottomNavBar\presentation\views\dashboard_page.dart:399 - "Upcoming Posts"
+Context:
+  398:                 const Text(
+> 399:                   "Upcoming Posts",
+  400:                   style: TextStyle(
+  401:                     color: Colors.black,
+
+49. lib\features\BottomNavBar\presentation\views\dashboard_page.dart:422 - "View All"
+Context:
+  421:                       const Text(
+> 422:                         "View All",
+  423:                         style: TextStyle(fontWeight: FontWeight.w600),
+  424:                       ),
+
+50. lib\features\BottomNavBar\presentation\views\dashboard_page.dart:507 - "Something went wrong"
+Context:
+  506:             return const Center(
+> 507:               child: Text('Something went wrong'),
+  508:             );
+  509:           })),
+
+51. lib\features\BottomNavBar\presentation\views\dashboard_page.dart:534 - "No upcoming posts"
+Context:
+  533:           Text(
+> 534:             'No upcoming posts',
+  535:             style: TextStyle(
+  536:               color: Colors.grey.shade700,
+
+52. lib\features\BottomNavBar\presentation\views\dashboard_page.dart:543 - "Schedule your first post to see it here"
+Context:
+  542:           Text(
+> 543:             'Schedule your first post to see it here',
+  544:             style: TextStyle(
+  545:               color: Colors.grey.shade500,
+
+53. lib\features\BottomNavBar\presentation\views\dashboard_page.dart:586 - "Premium Active"
+Context:
+  585:               Text(
+> 586:                 "Premium Active",
+  587:                 style: TextStyle(
+  588:                   color: Colors.grey[800],
+
+54. lib\features\BottomNavBar\presentation\views\dashboard_page.dart:597 - "Enjoy unlimited posts and scheduling"
+Context:
+  596:           Text(
+> 597:             "Enjoy unlimited posts and scheduling",
+  598:             style: TextStyle(
+  599:               color: Colors.grey[600],
+
+55. lib\features\BottomNavBar\presentation\views\dashboard_page.dart:684 - "MMM d, y HH:mm"
+Context:
+  683:                           Text(
+> 684:                             DateFormat('MMM d, y HH:mm')
+  685:                                 .format(post.scheduledFor!),
+  686:                             style: TextStyle(
+
+56. lib\features\connect\presentation\logic\bloc\connect_account_bloc.dart:105 - "failure.err :{param0}"
+Context:
+  104:             (failure) {
+  105:               logger.d("failure.err :${failure.err}");
+  106:               emit(ConnectAccountFailure(message: failure.err));
+  107:               if(!failure.err.contains("LoginStatus.cancelled")){
+
+57. lib\features\connect\presentation\logic\bloc\connect_account_bloc.dart:166 - "Please connect Instagram through Facebook"
+Context:
+  165:           emit(ConnectAccountFailure(
+> 166:             message: 'Please connect Instagram through Facebook',
+  167:           ));
+  168:           add(LoadConnectedAccounts());
+
+58. lib\features\connect\presentation\logic\bloc\connect_account_bloc.dart:183 - "No accounts available for this platform"
+Context:
+  182:       emit(ConnectAccountFailure(
+> 183:         message: 'No accounts available for this platform',
+  184:       ));
+  185:       add(LoadConnectedAccounts());
+
+59. lib\features\BottomNavBar\presentation\widgets\custom_start_section.dart:15 - "Scheduled Posts"
+Context:
+  14:             child: CustomStatWidget(
+> 15:           title: "Scheduled Posts",
+  16:           totalCount: '24',
+  17:           icon: Icons.calendar_month,
+
+60. lib\features\BottomNavBar\presentation\widgets\custom_start_section.dart:37 - "Posts This Week"
+Context:
+  36:             child: CustomStatWidget(
+> 37:           title: "Posts This Week",
+  38:           totalCount: '24',
+  39:           icon: Icons.timer,
+
+61. lib\features\connect\presentation\view\connect_screen.dart:75 - "Connect Your Social Accounts"
+Context:
+  74:                 Text(
+> 75:                   "Connect Your Social Accounts",
+  76:                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
+  77:                         color: Colors.white,
+
+62. lib\features\connect\presentation\view\connect_screen.dart:86 - "Seamlessly manage and post to your social platforms from one place."
+Context:
+  85:                   child: Text(
+> 86:                     "Seamlessly manage and post to your social platforms from one place.",
+  87:                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+  88:                           color: Colors.white.withOpacity(0.9),
+
+63. lib\features\connect\presentation\view\connect_screen.dart:143 - "{param0} Accounts Connected"
+Context:
+  142:                           Text(
+  143:                             "$count Accounts Connected",
+  144:                             overflow: TextOverflow.ellipsis,
+  145:                             style: Theme.of(context)
+
+64. lib\features\connect\presentation\view\connect_screen.dart:181 - "Available Platforms"
+Context:
+  180:                 Text(
+> 181:                   "Available Platforms",
+  182:                   style: TextStyle(
+  183:                     fontWeight: FontWeight.w700,
+
+65. lib\features\connect\presentation\view\connect_screen.dart:362 - "Connected Accounts"
+Context:
+  361:                                   Text(
+> 362:                                     "Connected Accounts",
+  363:                                     style: TextStyle(
+  364:                                       fontSize: 14,
+
+66. lib\features\connect\presentation\view\connect_screen.dart:468 - "Connecting account..."
+Context:
+  467:                             Text(
+> 468:                               "Connecting account...",
+  469:                               style: TextStyle(
+  470:                                 fontWeight: FontWeight.w600,
+
+67. lib\features\connect\presentation\view\connect_screen.dart:476 - "Please wait while we connect your account"
+Context:
+  475:                             Text(
+> 476:                               "Please wait while we connect your account",
+  477:                               style: TextStyle(
+  478:                                 fontSize: 14,
+
+68. lib\features\connect\presentation\widgets\connect_account_dialog.dart:31 - "Connect Page"
+Context:
+  30:                         CheckboxListTile(
+> 31:                           title: Text('Connect Page'),
+  32:                           value: page.isConnected,
+  33:                           onChanged: (value) {
+
+69. lib\features\connect\presentation\widgets\connect_account_dialog.dart:45 - "Connect Instagram Account"
+Context:
+  44:                           CheckboxListTile(
+> 45:                             title: Text('Connect Instagram Account'),
+  46:                             value: page.isConnected,
+  47:                             onChanged: (value) {
+
+70. lib\features\connect\presentation\widgets\connect_account_dialog.dart:78 - "Connect Selected Accounts"
+Context:
+  77:               },
+> 78:               child: const Text('Connect Selected Accounts'),
+  79:             );
+  80:           },
+
+71. lib\features\connect\presentation\widgets\custom_social_container.dart:59 - "Connect to {param0}"
+Context:
+  58:     ScaffoldMessenger.of(context).showSnackBar(
+  59:       SnackBar(content: Text('Connect to ${type.name.toUpperCase()}')),
+  60:     );
+  61:   }
+
+72. lib\features\onBoarding\presentation\view\onboarding_pages.dart:54 - "Boost Your Social Media Presence"
+Context:
+  53:                   child: const Text(
+> 54:                     "Boost Your Social Media Presence",
+  55:                     textAlign: TextAlign.center,
+  56:                     style: TextStyle(
+
+73. lib\features\onBoarding\presentation\view\onboarding_pages.dart:78 - "Post4Me helps you schedule and automate posts across all your social media platforms in one place."
+Context:
+  77:                   child: const Text(
+> 78:                     "Post4Me helps you schedule and automate posts across all your social media platforms in one place.",
+  79:                     textAlign: TextAlign.center,
+  80:                     style: TextStyle(
+
+74. lib\features\onBoarding\presentation\view\onboarding_pages.dart:139 - "Grow Your Audience Faster"
+Context:
+  138:                   child: const Text(
+> 139:                     "Grow Your Audience Faster",
+  140:                     textAlign: TextAlign.center,
+  141:                     style: TextStyle(
+
+75. lib\features\onBoarding\presentation\view\onboarding_pages.dart:163 - "Our premium features help you optimize posting times and content to maximize engagement and grow your followers."
+Context:
+  162:                   child: const Text(
+> 163:                     "Our premium features help you optimize posting times and content to maximize engagement and grow your followers.",
+  164:                     textAlign: TextAlign.center,
+  165:                     style: TextStyle(
+
+76. lib\features\onBoarding\presentation\view\onboarding_pages.dart:249 - "Unlock Premium Features Today!"
+Context:
+  248:                   child: const Text(
+> 249:                     "Unlock Premium Features Today!",
+  250:                     textAlign: TextAlign.center,
+  251:                     style: TextStyle(
+
+77. lib\features\onBoarding\presentation\view\onboarding_pages.dart:273 - "Limited time offer! Subscribe now to get exclusive access to all premium features and take your social media to the next level."
+Context:
+  272:                   child: const Text(
+> 273:                     "Limited time offer! Subscribe now to get exclusive access to all premium features and take your social media to the next level.",
+  274:                     textAlign: TextAlign.center,
+  275:                     style: TextStyle(
+
+78. lib\features\onBoarding\presentation\view\onboarding_pages.dart:303 - "45% OFF NOW"
+Context:
+  302:                     child: const Text(
+> 303:                       "45% OFF NOW",
+  304:                       style: TextStyle(
+  305:                         color: AppColors.whiteColor,
+
+79. lib\features\post\presentation\view\post_screen.dart:50 - "Publishing your post..."
+Context:
+  49:             builder: (context) => const LoadingDialog(
+> 50:               message: 'Publishing your post...',
+  51:             ),
+  52:           );
+
+80. lib\features\post\presentation\view\post_screen.dart:59 - "Post published successfully!"
+Context:
+  58:               behavior: SnackBarBehavior.floating,
+> 59:               content: Text('Post published successfully!'),
+  60:               backgroundColor: Colors.green,
+  61:               duration: Duration(seconds: 3),
+
+81. lib\features\post\presentation\view\post_screen.dart:99 - "Create Post"
+Context:
+  98:           title: const Text(
+> 99:             'Create Post',
+  100:             style: TextStyle(
+  101:               fontWeight: FontWeight.bold,
+
+82. lib\features\post\presentation\view\post_screen.dart:160 - "What's on your mind?"
+Context:
+  159:                               decoration: InputDecoration(
+  160:                                 hintText: 'What\'s on your mind?',
+  161:                                 border: InputBorder.none,
+  162:                                 hintStyle: TextStyle(
+
+83. lib\features\post\presentation\view\post_screen.dart:206 - "No Media"
+Context:
+  205:                                                       child: Text(
+> 206:                                                         'No Media',
+  207:                                                         style: TextStyle(
+  208:                                                           color: Colors.grey,
+
+84. lib\features\post\presentation\view\post_screen.dart:367 - "Add Media"
+Context:
+  366:                                       Text(
+> 367:                                         'Add Media',
+  368:                                         style: TextStyle(
+  369:                                           color: Colors.blue[700],
+
+85. lib\features\post\presentation\view\post_screen.dart:391 - "{param0} characters"
+Context:
+  390:                                           child: Text(
+  391:                                             '${value.length} characters',
+  392:                                             style: TextStyle(
+  393:                                               color: Colors.grey[600],
+
+86. lib\features\post\presentation\view\post_screen.dart:430 - "Delete Media"
+Context:
+  429:               title: const Text(
+> 430:                 'Delete Media',
+  431:                 style: TextStyle(
+  432:                   fontWeight: FontWeight.bold,
+
+87. lib\features\post\presentation\view\post_screen.dart:437 - "Are you sure you want to remove this media from your post?"
+Context:
+  436:               content: const Text(
+> 437:                 'Are you sure you want to remove this media from your post?',
+  438:                 style: TextStyle(
+  439:                   color: Color(0xFF5F6368),
+
+88. lib\features\post\presentation\view\post_screen.dart:477 - "Select Media Type"
+Context:
+  476:       builder: (context) => AlertDialog(
+> 477:         title: const Text('Select Media Type'),
+  478:         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+  479:         content: Column(
+
+89. lib\features\post\presentation\view\post_screen.dart:523 - "Error selecting media: {param0}"
+Context:
+  522:           behavior: SnackBarBehavior.floating,
+  523:           content: Text('Error selecting media: ${e.toString()}'),
+  524:           backgroundColor: Colors.red,
+  525:         ),
+
+90. lib\features\post\presentation\view\post_screen.dart:548 - "Crop Image"
+Context:
+  547:           IOSUiSettings(
+> 548:             title: 'Crop Image',
+  549:             aspectRatioPresets: [
+  550:               CropAspectRatioPreset.original,
+
+91. lib\features\post\presentation\view\scheduled_posts_screen.dart:31 - "Scheduled Posts"
+Context:
+  30:         title: const Text(
+> 31:           'Scheduled Posts',
+  32:           style: TextStyle(
+  33:             fontWeight: FontWeight.bold,
+
+92. lib\features\post\presentation\view\scheduled_posts_screen.dart:70 - "No scheduled posts"
+Context:
+  69:                     Text(
+> 70:                       'No scheduled posts',
+  71:                       style: TextStyle(
+  72:                         fontSize: 18,
+
+93. lib\features\post\presentation\view\scheduled_posts_screen.dart:79 - "Create a new post and schedule it for later"
+Context:
+  78:                     Text(
+> 79:                       'Create a new post and schedule it for later',
+  80:                       style: TextStyle(
+  81:                         color: Colors.grey.shade500,
+
+94. lib\features\post\presentation\view\scheduled_posts_screen.dart:211 - "Scheduled for {param0}"
+Context:
+  210:                                   Text(
+  211:                                     'Scheduled for ${DateFormat('MMM d, y HH:mm').format(post.scheduledFor ?? DateTime.now())}',
+  212:                                     style: TextStyle(
+  213:                                       color: Colors.grey.shade600,
+
+95. lib\features\post\presentation\view\scheduled_posts_screen.dart:292 - "Error loading posts"
+Context:
+  291:                   Text(
+> 292:                     'Error loading posts',
+  293:                     style: TextStyle(
+  294:                       fontSize: 18,
+
+96. lib\features\post\presentation\view\scheduled_posts_screen.dart:313 - "Try Again"
+Context:
+  312:                     icon: const Icon(Icons.refresh),
+> 313:                     label: const Text('Try Again'),
+  314:                     style: ElevatedButton.styleFrom(
+  315:                       backgroundColor: AppColors.blackColor,
+
+97. lib\features\post\presentation\view\scheduled_posts_screen.dart:392 - "Edit Scheduled Post"
+Context:
+  391:       builder: (context) => AlertDialog(
+> 392:         title: const Text('Edit Scheduled Post'),
+  393:         content: Column(
+  394:           mainAxisSize: MainAxisSize.min,
+
+98. lib\features\post\presentation\view\scheduled_posts_screen.dart:400 - "Post Content"
+Context:
+  399:               decoration: const InputDecoration(
+> 400:                 labelText: 'Post Content',
+  401:                 border: OutlineInputBorder(),
+  402:               ),
+
+99. lib\features\post\presentation\view\scheduled_posts_screen.dart:407 - "Scheduled for: {param0}"
+Context:
+  406:               title: Text(
+  407:                 'Scheduled for: ${DateFormat('MMM d, y HH:mm').format(selectedDateTime)}',
+  408:               ),
+  409:               trailing: const Icon(Icons.calendar_today),
+
+100. lib\features\post\presentation\view\scheduled_posts_screen.dart:471 - "Delete Scheduled Post"
+Context:
+  470:       builder: (context) => AlertDialog.adaptive(
+> 471:         title: const Text('Delete Scheduled Post'),
+  472:         content:
+  473:             const Text('Are you sure you want to delete this scheduled post?'),
+
+101. lib\features\post\presentation\view\scheduled_posts_screen.dart:473 - "Are you sure you want to delete this scheduled post?"
+Context:
+  472:         content:
+> 473:             const Text('Are you sure you want to delete this scheduled post?'),
+  474:         actions: [
+  475:           TextButton(
+
+102. lib\features\post\presentation\widgets\partial_success_dialog.dart:44 - "Partial Success"
+Context:
+  43:             Text(
+> 44:               'Partial Success',
+  45:            
+  46:             ),
+
+103. lib\features\post\presentation\widgets\partial_success_dialog.dart:49 - "Successfully posted to {param0} out of {param1} platforms"
+Context:
+  48:             Text(
+  49:               'Successfully posted to $successCount out of $totalCount platforms',
+  50:               textAlign: TextAlign.center,
+  51:              
+
+104. lib\features\post\presentation\widgets\partial_success_dialog.dart:56 - "Failed to post on:"
+Context:
+  55:               Text(
+> 56:                 'Failed to post on:',
+  57:               ),
+  58:               const SizedBox(height: 8),
+
+105. lib\features\post\presentation\widgets\loading_dialog.dart:52 - "Please wait while we process your request"
+Context:
+  51:             Text(
+> 52:               'Please wait while we process your request',
+  53:               style: TextStyle(
+  54:                 fontSize: 14,
+
+106. lib\features\splash\presentation\views\splash_screen.dart:141 - "Manage all your social media in one place"
+Context:
+  140:                       const Text(
+> 141:                         'Manage all your social media in one place',
+  142:                         style: TextStyle(
+  143:                           fontSize: 16,
+
+107. lib\features\post\presentation\widgets\pick_pages_to_post_dialog.dart:93 - "Select Pages"
+Context:
+  92:                 const Text(
+> 93:                   'Select Pages',
+  94:                   style: TextStyle(
+  95:                     fontSize: 24,
+
+108. lib\features\post\presentation\widgets\pick_pages_to_post_dialog.dart:139 - "Unnamed Page"
+Context:
+  138:                                 title: Text(
+> 139:                                   page.name ?? page.username ?? 'Unnamed Page',
+  140:                                   style: const TextStyle(
+  141:                                     fontWeight: FontWeight.w600,
+
+109. lib\features\post\presentation\widgets\pick_pages_to_post_dialog.dart:150 - "{param0} needs media to be selected first!"
+Context:
+  149:                                     ? Text(
+  150:                                         "${page.type.name} needs media to be selected first!")
+  151:                                     : null,
+  152:                                 trailing: Checkbox(
+
+110. lib\features\post\presentation\widgets\pick_pages_to_post_dialog.dart:181 - "You have reached your 5 posts limit. Subscribe to enjoy unlimited posts"
+Context:
+  180:                                                   content: Text(
+> 181:                                                       'You have reached your 5 posts limit. Subscribe to enjoy unlimited posts'),
+  182:                                                   backgroundColor: Colors.red,
+  183:                                                 ),
+
+111. lib\features\post\presentation\widgets\pick_pages_to_post_dialog.dart:238 - "Schedule Post"
+Context:
+  237:                                 const Text(
+> 238:                                   'Schedule Post',
+  239:                                   style: TextStyle(
+  240:                                     fontSize: 16,
+
+112. lib\features\post\presentation\widgets\pick_pages_to_post_dialog.dart:325 - "Scheduled time must be at least 10 minutes in the future"
+Context:
+  324:                                             content: Text(
+> 325:                                               'Scheduled time must be at least 10 minutes in the future',
+  326:                                               style: TextStyle(
+  327:                                                   color: Colors.white),
+
+113. lib\features\post\presentation\widgets\pick_pages_to_post_dialog.dart:405 - "Please select a date and time"
+Context:
+  404:                                   content:
+> 405:                                       Text('Please select a date and time'),
+  406:                                   backgroundColor: Colors.red,
+  407:                                 ),
+
+114. lib\features\post\presentation\widgets\pick_pages_to_post_dialog.dart:416 - "The post is empty. Please enter a message to share."
+Context:
+  415:                                   content: Text(
+> 416:                                       'The post is empty. Please enter a message to share.'),
+  417:                                   backgroundColor: Colors.red,
+  418:                                 ),
+
+115. lib\features\post\presentation\widgets\pick_pages_to_post_dialog.dart:455 - "Schedule Post"
+Context:
+  454:                     child: Text(
+> 455:                       isScheduled ? 'Schedule Post' : 'Post Now',
+  456:                       style: const TextStyle(
+  457:                         fontSize: 16,
+
+116. lib\features\post\presentation\widgets\pick_pages_to_post_dialog.dart:455 - "Post Now"
+Context:
+  454:                     child: Text(
+> 455:                       isScheduled ? 'Schedule Post' : 'Post Now',
+  456:                       style: const TextStyle(
+  457:                         fontSize: 16,
+
+117. lib\features\post\presentation\widgets\pick_pages_to_post_dialog.dart:483 - "Please select at least one page to post to"
+Context:
+  482:         const SnackBar(
+> 483:           content: Text('Please select at least one page to post to'),
+  484:           backgroundColor: Colors.red,
+  485:         ),
+
+118. lib\features\subscribe\presentation\widgets\subscription_package.dart:106 - "30% OFF"
+Context:
+  105:                  if(package.packageType==PackageType.annual) Text(
+> 106:                     "30% OFF",
+  107:                     style: TextStyle(
+  108:                       color: isSelected? Colors.white : Colors.white70,
+
+119. lib\features\subscribe\presentation\widgets\paywall_bottom_sheet.dart:85 - "Restore Purchase"
+Context:
+  84:                   child: const Text(
+> 85:                     'Restore Purchase',
+  86:                     style: TextStyle(color: Colors.white70),
+  87:                   ),
+
+120. lib\features\subscribe\presentation\widgets\paywall_bottom_sheet.dart:127 - "Upgrade to Premium"
+Context:
+  126:                       const Text(
+> 127:                         'Upgrade to Premium',
+  128:                         textAlign: TextAlign.center,
+  129:                         style: TextStyle(
+
+121. lib\features\subscribe\presentation\widgets\paywall_bottom_sheet.dart:138 - "Take control of your social media presence"
+Context:
+  137:                       const Text(
+> 138:                         'Take control of your social media presence',
+  139:                         textAlign: TextAlign.center,
+  140:                         style: TextStyle(
+
+122. lib\features\subscribe\presentation\widgets\paywall_bottom_sheet.dart:150 - "Unlimited Social Posts"
+Context:
+  149:                         icon: Icons.post_add_rounded,
+> 150:                         title: 'Unlimited Social Posts',
+  151:                         isPremium: true,
+  152:                       ),
+
+123. lib\features\subscribe\presentation\widgets\paywall_bottom_sheet.dart:155 - "Unlimited Scheduling"
+Context:
+  154:                         icon: Icons.schedule_rounded,
+> 155:                         title: 'Unlimited Scheduling',
+  156:                         isPremium: true,
+  157:                       ),
+
+124. lib\features\subscribe\presentation\widgets\paywall_bottom_sheet.dart:160 - "Unlimited Linked Accounts"
+Context:
+  159:                         icon: Icons.link_rounded,
+> 160:                         title: 'Unlimited Linked Accounts',
+  161:                         isPremium: true,
+  162:                       ),
+
+125. lib\features\subscribe\presentation\widgets\paywall_bottom_sheet.dart:253 - "Start Premium Now"
+Context:
+  252:                                       child: Text(
+> 253:                                         'Start Premium Now',
+  254:                                         style: TextStyle(
+  255:                                           color: Colors.white,
+
+126. lib\features\subscribe\presentation\widgets\paywall_bottom_sheet.dart:268 - "Cancel Any time through {param0}"
+Context:
+  267:                       Text(
+  268:                         "Cancel Any time through ${Platform.isIOS ? 'App Store' : 'Play Store'}",
+  269:                         style: TextStyle(
+  270:                           color: Colors.white54,
+
+127. lib\features\subscribe\presentation\widgets\paywall_bottom_sheet.dart:276 - "By subscribing, you agree to our Terms and Privacy Policy"
+Context:
+  275:                       const Text(
+> 276:                         'By subscribing, you agree to our Terms and Privacy Policy',
+  277:                         textAlign: TextAlign.center,
+  278:                         style: TextStyle(
+
+128. lib\features\subscribe\presentation\views\subscribe_screen.dart:92 - "Restore Purchase"
+Context:
+  91:                       child: const Text(
+> 92:                         'Restore Purchase',
+  93:                         style: TextStyle(color: Colors.white70),
+  94:                       ),
+
+129. lib\features\subscribe\presentation\views\subscribe_screen.dart:144 - "Upgrade to Premium"
+Context:
+  143:                             const Text(
+> 144:                               'Upgrade to Premium',
+  145:                               textAlign: TextAlign.center,
+  146:                               style: TextStyle(
+
+130. lib\features\subscribe\presentation\views\subscribe_screen.dart:155 - "Take control of your social media presence"
+Context:
+  154:                             const Text(
+> 155:                               'Take control of your social media presence',
+  156:                               textAlign: TextAlign.center,
+  157:                               style: TextStyle(
+
+131. lib\features\subscribe\presentation\views\subscribe_screen.dart:167 - "Unlimited Social Posts"
+Context:
+  166:                               icon: Icons.post_add_rounded,
+> 167:                               title: 'Unlimited Social Posts',
+  168:                               isPremium: true,
+  169:                             ),
+
+132. lib\features\subscribe\presentation\views\subscribe_screen.dart:172 - "Unlimited Scheduling"
+Context:
+  171:                               icon: Icons.schedule_rounded,
+> 172:                               title: 'Unlimited Scheduling',
+  173:                               isPremium: true,
+  174:                             ),
+
+133. lib\features\subscribe\presentation\views\subscribe_screen.dart:177 - "Unlimited Linked Accounts"
+Context:
+  176:                               icon: Icons.link_rounded,
+> 177:                               title: 'Unlimited Linked Accounts',
+  178:                               isPremium: true,
+  179:                             ),
+
+134. lib\features\subscribe\presentation\views\subscribe_screen.dart:275 - "Start Premium Now"
+Context:
+  274:                                               child: Text(
+> 275:                                                 'Start Premium Now',
+  276:                                                 style: TextStyle(
+  277:                                                   color: Colors.white,
+
+135. lib\features\subscribe\presentation\views\subscribe_screen.dart:292 - "Cancel Any time through {param0}"
+Context:
+  291:                             Text(
+  292:                               "Cancel Any time through ${Platform.isIOS ? 'App Store' : 'Play Store'}",
+  293:                               style: TextStyle(
+  294:                                 color: Colors.white54,
+
+136. lib\features\subscribe\presentation\views\subscribe_screen.dart:300 - "By subscribing, you agree to our Terms and Privacy Policy"
+Context:
+  299:                             const Text(
+> 300:                               'By subscribing, you agree to our Terms and Privacy Policy',
+  301:                               textAlign: TextAlign.center,
+  302:                               style: TextStyle(
+
+137. lib\features\subscribe\presentation\widgets\subscribed_user_widget.dart:49 - "Premium Active"
+Context:
+  48:               const Text(
+> 49:                 'Premium Active',
+  50:                 style: TextStyle(
+  51:                   color: Colors.white,
+
+138. lib\features\subscribe\presentation\widgets\subscribed_user_widget.dart:60 - "You're enjoying all premium features!"
+Context:
+  59:           const Text(
+  60:             'You\'re enjoying all premium features!',
+  61:             textAlign: TextAlign.center,
+  62:             style: TextStyle(
+
+139. lib\features\subscribe\presentation\widgets\subscribed_user_widget.dart:110 - "Manage subscription through {param0}"
+Context:
+  109:           Text(
+  110:             'Manage subscription through ${Platform.isAndroid ? 'Google Play' : 'App Store'}',
+  111:             textAlign: TextAlign.center,
+  112:             style: TextStyle(
+
+140. lib\shared\widgets\select_platform_dialog.dart:9 - "Select Platforms"
+Context:
+  8:     return AlertDialog(
+> 9:       title: const Text('Select Platforms'),
+  10:       content: Column(
+  11:         mainAxisSize: MainAxisSize.min,
+
+141. lib\utils\media_upload.dart:393 - "Upload failed with status: {param0}, message: {param1}"
+Context:
+  392:             error:
+  393:                 'Upload failed with status: ${response.statusCode}, message: ${response.body}');
+  394:       }
+  395:     } catch (e) {
+

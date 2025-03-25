@@ -1,135 +1,157 @@
-# Flutter Localization Checker
-
-A CLI tool that scans Flutter apps to detect non-localized strings, helping you identify text that should be internationalized.
-
-[![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/your-username/loc_checker)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
-
-## Overview
-
-When developing Flutter applications for international audiences, it's important to ensure all user-facing strings are properly localized. This tool helps you identify hardcoded strings in your codebase that should be localized using Flutter's internationalization framework.
-
-## Features
-
-- Scans all Dart files in your Flutter project for non-localized strings
-- Automatically detects and parses ARB localization files to avoid false positives
-- Excludes common patterns that don't need localization (URLs, color codes, etc.)
-- Generates detailed reports with file locations and context
-- Configurable to exclude specific directories or files
-- Can generate ARB files with missing strings for easy integration
-
-## Installation
-
-```bash
-dart pub global activate loc_checker
-```
-
-Or add it to your project's `pubspec.yaml` as a dev dependency:
-
-```yaml
-dev_dependencies:
-  loc_checker: ^1.1.0
-```
-
-## Usage
-
-Run the tool in your Flutter project directory:
-
-```bash
 loc_checker
-```
 
-Or specify a different project path:
+A Dart command-line tool to detect non-localized strings in Flutter projects and generate ARB files for localization. Designed for developers who want to ensure their Flutter apps are fully localized, loc_checker scans Dart files, identifies UI-related strings that need translation, and outputs them into a structured en.arb file with camelCase keys and named placeholders.
 
-```bash
-loc_checker /path/to/flutter/project
-```
+🚀 Features
 
-### Command-line Options
+🔍 String Detection: Identifies non-localized strings in Dart files, focusing on UI-related contexts (e.g., Text, TextFormField).
 
-```
-Usage: loc_checker [options] [project_path]
+📂 ARB Generation: Creates an en.arb file with camelCase keys (e.g., myAccount) and deduplicated values.
 
-A CLI tool that scans Flutter apps to detect non-localized strings.
+🔢 Placeholder Support: Converts Dart string interpolations (e.g., $variable) into named placeholders (e.g., {param0}) with proper ARB metadata.
 
-Options:
-  -h, --help                  Print this usage information.
-  -v, --verbose               Show verbose output.
-      --include-comments      Include strings in comments.
-  -a, --generate-arb          Generate an ARB file with non-localized strings.
-  -d, --exclude-dir           Directories to exclude from scanning.
-                              (defaults to "build", ".dart_tool", ".pub", ".git", "test", "bin")
-  -f, --exclude-file          Files to exclude from scanning.
-  -s, --scan-paths            Directories to scan (comma-separated or multiple flags). Defaults to lib.
-  -o, --output                Output file for the report. If not specified, prints to stdout.
-```
+⚙️ Custom UI Patterns: Allows users to specify custom UI components (e.g., CustomTextField) to include in the scan.
 
-### Examples
+📜 Verbose Logging: Provides detailed output for debugging when enabled.
 
-Exclude additional directories:
+🔧 Scalable Design: Modular code structure for easy extension and maintenance.
 
-```bash
-loc_checker --exclude-dir=build --exclude-dir=generated
-```
+📥 Installation
 
-Generate a report file:
+As a dev dependency:
 
-```bash
-loc_checker --output=localization_report.txt
-```
+dart pub add --dev loc_checker
 
-Include strings in comments:
+Install globally:
 
-```bash
-loc_checker --include-comments
-```
+dart pub global activate loc_checker
 
-Generate an ARB file with missing strings:
+🚀 Usage
 
-```bash
-loc_checker --generate-arb
-```
+Run loc_checker on your Flutter project to scan for non-localized strings and optionally generate an ARB file.
 
-Specify custom scan paths:
+🔍 Basic Command: Scan a project and output a report
 
-```bash
-loc_checker --scan-paths=lib/ui --scan-paths=lib/screens
-```
+dart run loc_checker /path/to/your/flutter/project -o report.txt
 
-## How It Works
+📂 Generate ARB File: Scan and create an en.arb file
 
-The tool performs the following steps:
+dart run loc_checker --generate-arb --arb-output /path/to/your/flutter/project/lib/l10n /path/to/your/flutter/project -o report.txt
 
-1. Scans your project for ARB localization files and extracts existing localized keys
-2. Also checks for other localization formats (JSON files in i18n/ or translations/ directories)
-3. Searches all Dart files for string literals using Dart's analyzer package
-4. Filters out strings that are likely not needing localization (URLs, color codes, etc.)
-5. Checks if each string is already being used with a localization method
-6. Generates a report of all potentially non-localized strings
+🛠️ With Verbose Logging: Enable detailed logs
 
-### ARB File Generation
+dart run loc_checker --verbose --generate-arb /path/to/your/flutter/project -o report.txt
 
-When using the `--generate-arb` option, the tool will create a file at `lib/l10n/missing_strings.arb` containing all detected non-localized strings. The keys are automatically generated based on the string content, following these rules:
+🎯 Custom UI Components: Include custom UI widgets in the scan
 
-- Keys are converted to camelCase
-- Special characters are removed
-- Keys are limited to 30 characters
-- Keys always start with a letter
+dart run loc_checker --custom-ui "CustomTextField,validator" /path/to/your/flutter/project -o report.txt
 
-This makes it easy to integrate the missing strings into your existing localization workflow.
+🏆 Full Example: Scan, generate ARB, and use all options
 
-## Best Practices for Flutter Localization
+dart run loc_checker --verbose --generate-arb --custom-ui "CustomTextField,validator" --scan-paths "/path/to/lib,/path/to/src" /path/to/your/flutter/project -o report.txt --arb-output /path/to/your/flutter/project/lib/l10n
 
-1. Use Flutter's `intl` package and the `flutter_localizations` package for internationalization
-2. Extract all user-facing strings to ARB files
-3. Use the generated localization class to access strings in your code
-4. Run this tool regularly to catch any missed strings
-5. Consider adding this tool to your CI/CD pipeline
+📌 Command-Line Options
 
-## Contributing
+Option
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Description
 
-## License
+Default
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+--verbose, -v
+
+Enable detailed logging
+
+false
+
+--generate-arb
+
+Generate an en.arb file
+
+false
+
+--arb-output
+
+Directory to save the en.arb file
+
+Project root
+
+--scan-paths
+
+Comma-separated paths to scan
+
+lib/ in project root
+
+--custom-ui
+
+Comma-separated custom UI patterns to include
+
+None
+
+-o, --output
+
+Path for the report file
+
+report.txt
+
+[project_path]
+
+Root directory of the Flutter project
+
+Current directory
+
+📜 Output
+
+📋 Report File (report.txt)
+
+A text file listing non-localized strings with file paths, line numbers, and context:
+
+Found 2 non-localized strings:
+
+1. lib/widgets/custom.dart:1 - "Username"
+   Context:
+     1: CustomTextField(label: 'Username')
+     2: TextFormField(validator: (v) => v.isEmpty ? 'Required field' : null)
+
+2. lib/widgets/custom.dart:2 - "Required field"
+   Context:
+     1: CustomTextField(label: 'Username')
+     2: TextFormField(validator: (v) => v.isEmpty ? 'Required field' : null)
+
+📂 ARB File (en.arb)
+
+A localization file with camelCase keys and named placeholders:
+
+{
+  "username": "Username",
+  "requiredField": "Required field",
+  "uploadFailedWithStatusMessage": "Upload failed with status: {param0}, message: {param1}",
+  "@uploadFailedWithStatusMessage": {
+    "description": "String with placeholders from lib/network.dart:10",
+    "placeholders": {
+      "param0": {},
+      "param1": {}
+    }
+  }
+}
+
+🔍 How It Works
+
+Scanning: Analyzes Dart files in the specified paths (default: lib/), excluding common non-source directories (build, .dart_tool).
+
+Detection: Uses AST parsing to find string literals in UI-related contexts, skipping localized strings (AppLocalizations.of(context).key).
+
+Filtering: Ignores non-UI strings, empty strings, URLs, and other non-translatable content.
+
+ARB Generation: Converts detected strings into a deduplicated en.arb file with camelCase keys and proper placeholder metadata.
+
+📌 Contribution
+
+Feel free to submit issues, feature requests, or pull requests to improve loc_checker.
+
+📜 License
+
+This project is licensed under the MIT License.
+
+Made with ❤️ for Flutter developers! 🚀
+
