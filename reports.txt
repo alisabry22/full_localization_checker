@@ -1,0 +1,20 @@
+Found 3 non-localized strings:
+
+1. test_files\test_string.dart:24 - "Alert Title"
+Context:
+> 24:     title: 'Alert Title',
+  25:     content: "This is a message that should be localized",
+  26:   );
+
+2. test_files\test_string.dart:25 - "This is a message that should be localized"
+Context:
+> 25:     content: "This is a message that should be localized",
+  26:   );
+  27:   
+
+3. test_files\test_string.dart:29 - "This should be detected as UI text"
+Context:
+> 29:    Text('This should be detected as UI text');
+  30: }
+  31: 
+

@@ -1,11 +1,11 @@
-name: localization_checker
+name: loc_checker
 description: A CLI tool that scans Flutter apps to detect non-localized strings.
-version: 1.0.0
+version: 1.1.0
 # repository: https://github.com/my_org/my_repo
 executables:
-  loc_checker: bin/main.dart
+  loc_checker: bin/loc_checker.dart
 environment:
-  sdk:  '>=3.5.2 <4.0.0'
+  sdk:  '>=3.6.0 <4.0.0'
 
 # Add regular dependencies here.
 dependencies:
@@ -15,7 +15,9 @@ dependencies:
   colorize: ^3.0.0
   yaml: ^3.1.2
   file: ^7.0.1
+  analyzer: ^7.3.0
 
 dev_dependencies:
-  lints: ^5.0.0
+  lints: ^5.1.1
   test: ^1.24.0
+  

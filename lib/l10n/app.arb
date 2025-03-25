@@ -1,0 +1,5 @@
+{
+  "@@locale": "en",
+  "alertTitle": "Alert Title",
+  "message": "This is a message that should be localized"
+}

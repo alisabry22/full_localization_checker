@@ -1,0 +1,6 @@
+{
+  "@@locale": "en",
+  "alertTitle": "Alert Title",
+  "thisIsAMessageThatShouldBeLoca": "This is a message that should be localized",
+  "thisShouldBeDetectedAsUiText": "This should be detected as UI text"
+}
