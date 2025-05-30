@@ -6,7 +6,7 @@ homepage: https://github.com/alisabry22/full_localization_checker
 repository: https://github.com/alisabry22/full_localization_checker
 issue_tracker: https://github.com/alisabry22/full_localization_checker/issues
 license: MIT
-version: 1.0.0
+version: 1.1.0
 
 executables:
   loc_checker: loc_checker
@@ -18,10 +18,10 @@ dependencies:
   args: ^2.4.2
   path: ^1.8.3
   glob: ^2.1.2
-
-
   file: ^7.0.1
   analyzer: ^7.3.0
+  http: ^1.1.0
+  yaml: ^3.1.2
 
 dev_dependencies:
   lints: ^5.1.1
