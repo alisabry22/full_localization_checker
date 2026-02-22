@@ -1,0 +1,169 @@
+🔍 Localization Analysis Results
+===============================
+Found 23 non-localized strings:
+
+[MISSING] "Text widget" → found in lib/generator/arb_generator.dart:148 pattern: Text widget
+Context:
+  147:     final patterns = <String, String>{
+> 148:       'Text(': 'Text widget',
+  149:       'TextFormField(': 'Form field',
+  150:       'AppBar(': 'App bar',
+
+[MISSING] "Form field" → found in lib/generator/arb_generator.dart:149 pattern: Text widget
+Context:
+  148:       'Text(': 'Text widget',
+> 149:       'TextFormField(': 'Form field',
+  150:       'AppBar(': 'App bar',
+  151:       'SnackBar(': 'Snack bar message',
+
+[MISSING] "App bar" → found in lib/generator/arb_generator.dart:150 pattern: TextFormField
+Context:
+  149:       'TextFormField(': 'Form field',
+> 150:       'AppBar(': 'App bar',
+  151:       'SnackBar(': 'Snack bar message',
+  152:       'AlertDialog(': 'Dialog content',
+
+[MISSING] "Snack bar message" → found in lib/generator/arb_generator.dart:151 pattern: AppBar title/actions
+Context:
+  150:       'AppBar(': 'App bar',
+> 151:       'SnackBar(': 'Snack bar message',
+  152:       'AlertDialog(': 'Dialog content',
+  153:       'ElevatedButton(': 'Button text',
+
+[MISSING] "Dialog content" → found in lib/generator/arb_generator.dart:152 pattern: SnackBar message
+Context:
+  151:       'SnackBar(': 'Snack bar message',
+> 152:       'AlertDialog(': 'Dialog content',
+  153:       'ElevatedButton(': 'Button text',
+  154:       'TextButton(': 'Button text',
+
+[MISSING] "Button text" → found in lib/generator/arb_generator.dart:153 pattern: AlertDialog content
+Context:
+  152:       'AlertDialog(': 'Dialog content',
+> 153:       'ElevatedButton(': 'Button text',
+> 154:       'TextButton(': 'Button text',
+  155:       'FloatingActionButton(': 'Floating action button',
+
+[MISSING] "Button text" → found in lib/generator/arb_generator.dart:154 pattern: Button text
+Context:
+> 153:       'ElevatedButton(': 'Button text',
+> 154:       'TextButton(': 'Button text',
+  155:       'FloatingActionButton(': 'Floating action button',
+  156:       'ListTile(': 'List item',
+
+[MISSING] "Floating action button" → found in lib/generator/arb_generator.dart:155 pattern: Button text
+Context:
+  154:       'TextButton(': 'Button text',
+> 155:       'FloatingActionButton(': 'Floating action button',
+  156:       'ListTile(': 'List item',
+  157:       'Tooltip(': 'Tooltip text',
+
+[MISSING] "List item" → found in lib/generator/arb_generator.dart:156 pattern: FAB text
+Context:
+  155:       'FloatingActionButton(': 'Floating action button',
+> 156:       'ListTile(': 'List item',
+  157:       'Tooltip(': 'Tooltip text',
+  158:       'validator:': 'Form validation message',
+
+[MISSING] "Tooltip text" → found in lib/generator/arb_generator.dart:157 pattern: ListTile content
+Context:
+  156:       'ListTile(': 'List item',
+> 157:       'Tooltip(': 'Tooltip text',
+  158:       'validator:': 'Form validation message',
+  159:       'labelText:': 'Input field label',
+
+[MISSING] "Form validation message" → found in lib/generator/arb_generator.dart:158 pattern: Tooltip text
+Context:
+  157:       'Tooltip(': 'Tooltip text',
+> 158:       'validator:': 'Form validation message',
+  159:       'labelText:': 'Input field label',
+  160:       'hintText:': 'Input field hint',
+
+[MISSING] "Input field label" → found in lib/generator/arb_generator.dart:159 pattern: Form validation
+Context:
+  158:       'validator:': 'Form validation message',
+> 159:       'labelText:': 'Input field label',
+  160:       'hintText:': 'Input field hint',
+  161:       'errorText:': 'Error message',
+
+[MISSING] "Input field hint" → found in lib/generator/arb_generator.dart:160 pattern: Input label
+Context:
+  159:       'labelText:': 'Input field label',
+> 160:       'hintText:': 'Input field hint',
+  161:       'errorText:': 'Error message',
+  162:       'title:': 'Title text',
+
+[MISSING] "Error message" → found in lib/generator/arb_generator.dart:161 pattern: Input hint
+Context:
+  160:       'hintText:': 'Input field hint',
+> 161:       'errorText:': 'Error message',
+  162:       'title:': 'Title text',
+  163:       'subtitle:': 'Subtitle text',
+
+[MISSING] "Title text" → found in lib/generator/arb_generator.dart:162 pattern: Error message
+Context:
+  161:       'errorText:': 'Error message',
+> 162:       'title:': 'Title text',
+  163:       'subtitle:': 'Subtitle text',
+  164:     };
+
+[MISSING] "Subtitle text" → found in lib/generator/arb_generator.dart:163 pattern: Title property
+Context:
+  162:       'title:': 'Title text',
+> 163:       'subtitle:': 'Subtitle text',
+  164:     };
+  165: 
+
+[MISSING] "Text widget" → found in lib/automation/code_converter.dart:222 pattern: Text widget
+Context:
+  221:     final patterns = <String, String>{
+> 222:       'Text(': 'Text widget',
+  223:       'TextFormField(': 'Form field',
+  224:       'AppBar(': 'App bar',
+
+[MISSING] "Form field" → found in lib/automation/code_converter.dart:223 pattern: Text widget
+Context:
+  222:       'Text(': 'Text widget',
+> 223:       'TextFormField(': 'Form field',
+  224:       'AppBar(': 'App bar',
+  225:       'SnackBar(': 'Snack bar',
+
+[MISSING] "App bar" → found in lib/automation/code_converter.dart:224 pattern: TextFormField
+Context:
+  223:       'TextFormField(': 'Form field',
+> 224:       'AppBar(': 'App bar',
+  225:       'SnackBar(': 'Snack bar',
+  226:       'AlertDialog(': 'Dialog',
+
+[MISSING] "Snack bar" → found in lib/automation/code_converter.dart:225 pattern: AppBar title/actions
+Context:
+  224:       'AppBar(': 'App bar',
+> 225:       'SnackBar(': 'Snack bar',
+  226:       'AlertDialog(': 'Dialog',
+  227:       'ElevatedButton(': 'Button',
+
+[MISSING] "List item" → found in lib/automation/code_converter.dart:230 pattern: FAB text
+Context:
+  229:       'FloatingActionButton(': 'FAB',
+> 230:       'ListTile(': 'List item',
+  231:       'Tooltip(': 'Tooltip',
+  232:       'validator:': 'Validation',
+
+[MISSING] "builder: (context)" → found in lib/automation/code_converter.dart:260 pattern: AlertDialog content
+Context:
+  259:       '@override',
+> 260:       'builder: (context)',
+  261:       'builder: (BuildContext context)',
+  262:       'AlertDialog(',
+
+[MISSING] "builder: (BuildContext context)" → found in lib/automation/code_converter.dart:261 pattern: AlertDialog content
+Context:
+  260:       'builder: (context)',
+> 261:       'builder: (BuildContext context)',
+  262:       'AlertDialog(',
+  263:       'SimpleDialog(',
+
+📊 Summary:
+- Total missing strings: 23
+- Unique patterns detected: 14
+- Files affected: 2

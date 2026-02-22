@@ -1,0 +1,269 @@
+#!/bin/bash
+
+# Flutter Localization Checker - Git Pre-commit Hook
+# Automatically checks for localization issues before commit
+
+set -e
+
+# Configuration
+ENABLE_LOCALIZATION_CHECK=${ENABLE_LOCALIZATION_CHECK:-true}
+BLOCK_ON_ISSUES=${BLOCK_ON_ISSUES:-false}
+AUTO_CONVERT=${AUTO_CONVERT:-false}
+AUTO_GENERATE_ARB=${AUTO_GENERATE_ARB:-false}
+VERBOSE=${VERBOSE:-false}
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+# Logging functions
+log_info() {
+    echo -e "${BLUE}[INFO]${NC} $1"
+}
+
+log_warn() {
+    echo -e "${YELLOW}[WARN]${NC} $1"
+}
+
+log_error() {
+    echo -e "${RED}[ERROR]${NC} $1"
+}
+
+log_success() {
+    echo -e "${GREEN}[SUCCESS]${NC} $1"
+}
+
+# Check if we're in a Flutter project
+check_flutter_project() {
+    if [ ! -f "pubspec.yaml" ]; then
+        log_warn "Not a Flutter project. Skipping localization check."
+        exit 0
+    fi
+    
+    if ! grep -q "flutter:" pubspec.yaml; then
+        log_warn "Not a Flutter project. Skipping localization check."
+        exit 0
+    fi
+}
+
+# Check if loc_checker is available
+check_loc_checker() {
+    if ! command -v dart &> /dev/null; then
+        log_error "Dart not found. Please install Dart/Flutter SDK."
+        exit 1
+    fi
+    
+    # Check if loc_checker is added as dependency
+    if ! grep -q "loc_checker:" pubspec.yaml; then
+        log_warn "loc_checker not found in pubspec.yaml. Adding it..."
+        add_loc_checker_dependency
+    fi
+}
+
+# Add loc_checker as dev dependency
+add_loc_checker_dependency() {
+    if [ -f "pubspec.yaml" ]; then
+        # Check if dev_dependencies section exists
+        if ! grep -q "dev_dependencies:" pubspec.yaml; then
+            echo "" >> pubspec.yaml
+            echo "dev_dependencies:" >> pubspec.yaml
+            echo "  flutter_test:" >> pubspec.yaml
+            echo "    sdk: flutter" >> pubspec.yaml
+        fi
+        
+        # Add loc_checker if not present
+        if ! grep -q "loc_checker:" pubspec.yaml; then
+            sed -i '/dev_dependencies:/a\  loc_checker: ^1.0.0' pubspec.yaml
+            log_info "Added loc_checker to pubspec.yaml"
+            
+            # Run pub get
+            dart pub get
+            log_info "Updated dependencies"
+        fi
+    fi
+}
+
+# Get list of staged Dart files
+get_staged_dart_files() {
+    git diff --cached --name-only --diff-filter=ACM | grep -E "\.(dart)$" || true
+}
+
+# Check specific files for localization issues
+check_localization_issues() {
+    local files=("$@")
+    local has_issues=false
+    local total_issues=0
+    
+    if [ ${#files[@]} -eq 0 ]; then
+        log_info "No Dart files to check."
+        return 0
+    fi
+    
+    log_info "Checking ${#files[@]} Dart files for localization issues..."
+    
+    for file in "${files[@]}"; do
+        if [ -f "$file" ]; then
+            log_info "Checking: $file"
+            
+            # Run localization checker on specific file
+            local output
+            local exit_code=0
+            
+            if [ "$VERBOSE" = true ]; then
+                output=$(dart run loc_checker --file="$file" --format=enhanced --verbose 2>&1) || exit_code=$?
+            else
+                output=$(dart run loc_checker --file="$file" --format=enhanced 2>&1) || exit_code=$?
+            fi
+            
+            if [ $exit_code -ne 0 ]; then
+                log_error "Failed to check $file"
+                echo "$output"
+                continue
+            fi
+            
+            # Parse output for issues
+            local file_issues
+            file_issues=$(echo "$output" | grep -c "\[MISSING\]" || true)
+            
+            if [ "$file_issues" -gt 0 ]; then
+                has_issues=true
+                total_issues=$((total_issues + file_issues))
+                
+                log_warn "Found $file_issues localization issues in $file:"
+                echo "$output" | grep "\[MISSING\]" | head -5
+                
+                if [ "$file_issues" -gt 5 ]; then
+                    log_warn "... and $((file_issues - 5)) more issues"
+                fi
+                echo ""
+            fi
+        fi
+    done
+    
+    if [ "$has_issues" = true ]; then
+        log_warn "Found $total_issues total localization issues"
+        return 1
+    else
+        log_success "No localization issues found!"
+        return 0
+    fi
+}
+
+# Auto-convert strings to localization calls
+auto_convert_strings() {
+    local files=("$@")
+    
+    if [ ${#files[@]} -eq 0 ]; then
+        return 0
+    fi
+    
+    log_info "Auto-converting strings to localization calls..."
+    
+    for file in "${files[@]}"; do
+        if [ -f "$file" ]; then
+            log_info "Converting: $file"
+            dart run loc_checker --convert-file="$file" --dry-run=false
+        fi
+    done
+    
+    log_success "Auto-conversion completed"
+}
+
+# Generate ARB files
+generate_arb_files() {
+    log_info "Generating ARB files..."
+    
+    if dart run loc_checker --generate-arb --output-dir="lib/l10n"; then
+        log_success "ARB files generated successfully"
+        
+        # Stage the generated ARB files
+        git add lib/l10n/*.arb 2>/dev/null || true
+    else
+        log_error "Failed to generate ARB files"
+    fi
+}
+
+# Main execution
+main() {
+    log_info "🌍 Flutter Localization Checker - Pre-commit Hook"
+    echo ""
+    
+    # Skip if localization check is disabled
+    if [ "$ENABLE_LOCALIZATION_CHECK" != true ]; then
+        log_info "Localization check disabled. Skipping..."
+        exit 0
+    fi
+    
+    # Check if this is a Flutter project
+    check_flutter_project
+    
+    # Check if loc_checker is available
+    check_loc_checker
+    
+    # Get staged Dart files
+    staged_files=($(get_staged_dart_files))
+    
+    if [ ${#staged_files[@]} -eq 0 ]; then
+        log_info "No Dart files staged for commit."
+        exit 0
+    fi
+    
+    # Run localization checks
+    local check_failed=false
+    if ! check_localization_issues "${staged_files[@]}"; then
+        check_failed=true
+    fi
+    
+    # Handle auto-conversion
+    if [ "$check_failed" = true ] && [ "$AUTO_CONVERT" = true ]; then
+        log_info "Auto-converting strings..."
+        auto_convert_strings "${staged_files[@]}"
+        
+        # Re-stage the modified files
+        for file in "${staged_files[@]}"; do
+            git add "$file"
+        done
+        
+        # Re-check after conversion
+        if check_localization_issues "${staged_files[@]}"; then
+            check_failed=false
+            log_success "Auto-conversion resolved all issues!"
+        fi
+    fi
+    
+    # Generate ARB files if requested
+    if [ "$AUTO_GENERATE_ARB" = true ]; then
+        generate_arb_files
+    fi
+    
+    # Handle blocking behavior
+    if [ "$check_failed" = true ]; then
+        echo ""
+        log_warn "🚫 Localization issues detected!"
+        
+        if [ "$BLOCK_ON_ISSUES" = true ]; then
+            log_error "Commit blocked due to localization issues."
+            echo ""
+            echo "To fix this:"
+            echo "1. Run: dart run loc_checker --convert-all"
+            echo "2. Or set BLOCK_ON_ISSUES=false to allow commit"
+            echo "3. Or set AUTO_CONVERT=true to auto-fix issues"
+            echo ""
+            exit 1
+        else
+            log_warn "Proceeding with commit (BLOCK_ON_ISSUES=false)"
+            echo ""
+            echo "💡 Consider running: dart run loc_checker --convert-all"
+            echo ""
+        fi
+    fi
+    
+    log_success "✅ Pre-commit localization check passed!"
+    exit 0
+}
+
+# Run main function
+main "$@" 

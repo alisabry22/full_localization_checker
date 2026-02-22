@@ -7,7 +7,6 @@ class TranslationService {
   final String apiKey;
   final TranslationProvider provider;
   final bool verbose;
-  final Map<String, String> _cache = {};
 
   TranslationService({
     required this.apiKey,

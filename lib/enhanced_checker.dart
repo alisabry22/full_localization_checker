@@ -6,7 +6,6 @@ import 'automation/code_generator.dart';
 import 'automation/translation_service.dart';
 import 'checker.dart';
 import 'config.dart';
-import 'enhanced_patterns/widget_pattern_detector.dart';
 import 'models/models.dart';
 
 /// Enhanced localization checker with end-to-end automation capabilities
@@ -16,7 +15,6 @@ class EnhancedLocalizationChecker {
   final bool verbose;
 
   late final LocalizationChecker _baseChecker;
-  late final EnhancedWidgetPatternDetector _patternDetector;
   late final CoverageAnalytics _analytics;
 
   EnhancedLocalizationChecker({
@@ -25,8 +23,6 @@ class EnhancedLocalizationChecker {
     this.verbose = false,
   }) {
     _baseChecker = LocalizationChecker(config: config);
-    _patternDetector =
-        EnhancedWidgetPatternDetector(config: config, verbose: verbose);
     _analytics =
         CoverageAnalytics(projectPath: config.projectPath, verbose: verbose);
   }
@@ -298,6 +294,12 @@ class EnhancedLocalizationChecker {
                 lineNumber: issue['lineNumber'] as int,
                 content: issue['content'] as String,
                 context: (issue['context'] as List<dynamic>).cast<String>(),
+                offset: (issue['offset'] as int?) ?? 0,
+                length: (issue['length'] as int?) ?? 0,
+                variables:
+                    (issue['variables'] as List<dynamic>?)?.cast<String>() ??
+                        const [],
+                parentNode: issue['parentNode'] as String?,
               ))
           .toList();
     } catch (e) {

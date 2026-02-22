@@ -1,32 +1,58 @@
 class NonLocalizedString {
   final String filePath;
   final int lineNumber;
+  final int columnNumber;
   final String content;
   final List<String> context;
+  final int offset;
+  final int length;
+  final List<String> variables;
+  final String? parentNode;
+  final String? constructorName;
+  final String? argumentName;
 
   NonLocalizedString({
     required this.filePath,
     required this.lineNumber,
+    this.columnNumber = 0,
     required this.content,
     required this.context,
+    required this.offset,
+    required this.length,
+    this.variables = const [],
+    this.parentNode,
+    this.constructorName,
+    this.argumentName,
   });
 
   @override
   String toString() =>
-      '$filePath:$lineNumber - "$content"\nContext:\n  ${context.join("\n  ")}';
+      '$filePath:$lineNumber - "$content"\nContext:\n  ${context.join("\n  ")}\nParent: $parentNode';
 }
 
 class StringLiteralInfo {
   final String content;
   final int lineNumber;
+  final int columnNumber;
   final bool isInterpolated;
   final String? parentNode;
+  final String? constructorName;
+  final String? argumentName;
+  final int offset;
+  final int length;
+  final List<String> variables;
 
   StringLiteralInfo({
     required this.content,
     required this.lineNumber,
+    this.columnNumber = 0,
     this.isInterpolated = false,
     this.parentNode,
+    this.constructorName,
+    this.argumentName,
+    required this.offset,
+    required this.length,
+    this.variables = const [],
   });
 }
 

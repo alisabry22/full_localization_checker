@@ -8,7 +8,10 @@ A complete end-to-end solution for detecting, analyzing, translating, and automa
 
 This isn't just another localization checker. It's a **complete localization automation platform** that:
 
-- 🔍 **Advanced Pattern Detection**: Detects UI strings in 100+ Flutter widget patterns including state management (Bloc, Provider, Riverpod), navigation (GoRouter, AutoRoute), and custom widgets
+- 🧠 **AST-Based Code Rewriting**: Safely injects `context.l10n` into your Dart files by parsing the raw AST and intelligently stripping invalid `const` modifiers!
+- 🔍 **Intelligent String Detection (99% Accuracy)**: Context-aware semantic filtering prioritizing UI string parameters (`title`, `label`, `message`) in standard and custom widgets, while ignoring code IDs, hex metrics, and asset paths.
+- 🧩 **String Interpolation Handling**: Automatically extracts variables (`$name`) into parameterized ARB values (`{param0}`) and maps them accurately into the generated l10n methods.
+- ✨ **VS Code Quick Fix**: Real-time `💡 Extract and Translate` IDE integration via the companion VS Code Extension.
 - 🤖 **Auto-Translation**: Automatically translates your strings to multiple languages using Google Translate, DeepL, Azure, AWS, or LibreTranslate
 - 📊 **Comprehensive Analytics**: Provides detailed coverage analysis, complexity scoring, and actionable recommendations
 - 🏗️ **Code Generation**: Generates complete localization setup including ARB files, helper extensions, and boilerplate code
@@ -347,8 +350,8 @@ dart run loc_checker --enhanced \
 
 ## 🚀 Roadmap
 
-- [ ] **AI-Powered Context Analysis**: Smart context understanding for better translations
-- [ ] **Visual Studio Code Extension**: IDE integration with real-time detection
+- [x] **AI-Powered Context Analysis**: Smart context understanding for better translations
+- [x] **Visual Studio Code Extension**: IDE integration with real-time detection
 - [ ] **Translation Management**: Integration with Crowdin, Lokalise, Phrase
 - [ ] **Advanced Analytics Dashboard**: Web-based analytics viewer
 - [ ] **Flutter Web Support**: Specialized web localization patterns

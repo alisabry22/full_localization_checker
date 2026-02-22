@@ -18,6 +18,7 @@ class StringLiteralVisitor extends RecursiveAstVisitor<void> {
   @override
   void visitStringInterpolation(StringInterpolation node) {
     final parts = <String>[];
+    final variables = <String>[];
     var placeholderIndex = 0;
     var hasOnlyVariables = true;
 
@@ -30,13 +31,14 @@ class StringLiteralVisitor extends RecursiveAstVisitor<void> {
         }
       } else if (element is InterpolationExpression) {
         parts.add('{param$placeholderIndex}');
+        variables.add(element.expression.toString());
         placeholderIndex++;
       }
     }
 
     final content = parts.join();
     if (!hasOnlyVariables && content.isNotEmpty) {
-      _addLiteral(node, true, content);
+      _addLiteral(node, true, content, variables);
     }
   }
 
@@ -49,17 +51,64 @@ class StringLiteralVisitor extends RecursiveAstVisitor<void> {
     }
   }
 
-  void _addLiteral(AstNode node, bool isInterpolated, String content) {
-    final lineNumber = lineInfo.getLocation(node.offset).lineNumber;
+  void _addLiteral(AstNode node, bool isInterpolated, String content,
+      [List<String> variables = const []]) {
+    final location = lineInfo.getLocation(node.offset);
+    final lineNumber = location.lineNumber;
+    final columnNumber = location.columnNumber;
+
+    String? constructorName;
+    String? argumentName;
+
+    AstNode? current = node.parent;
+    while (current != null) {
+      if (current is NamedExpression) {
+        argumentName = current.name.label.name;
+        final parent = current.parent;
+        if (parent is ArgumentList) {
+          final grandParent = parent.parent;
+          if (grandParent is InstanceCreationExpression) {
+            constructorName = grandParent.constructorName.toString();
+          } else if (grandParent is MethodInvocation) {
+            constructorName = grandParent.methodName.name;
+          }
+        }
+        break;
+      } else if (current is ArgumentList) {
+        final parent = current.parent;
+        if (parent is InstanceCreationExpression) {
+          constructorName = parent.constructorName.toString();
+          // Find positional index
+          final index =
+              parent.argumentList.arguments.indexOf(node as Expression);
+          if (index != -1) {
+            argumentName = 'positional[$index]';
+          }
+        }
+        break;
+      } else if (current is InstanceCreationExpression) {
+        constructorName = current.constructorName.toString();
+        break;
+      }
+      current = current.parent;
+    }
+
     String? parentNode = _getParentNode(node);
     if (verbose) {
-      print('AST: Found "$content" at line $lineNumber, parent: $parentNode');
+      print(
+          'AST: Found "$content" at line $lineNumber:$columnNumber, constructor: $constructorName, arg: $argumentName');
     }
     literals.add(StringLiteralInfo(
       content: content,
       lineNumber: lineNumber,
+      columnNumber: columnNumber,
       isInterpolated: isInterpolated,
       parentNode: parentNode,
+      constructorName: constructorName,
+      argumentName: argumentName,
+      offset: node.offset,
+      length: node.length,
+      variables: variables,
     ));
   }
 

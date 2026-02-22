@@ -32,8 +32,8 @@ class LocalizationChecker {
     await _scanDartFiles();
     if (generateArb) {
       final outputDir = arbOutputDir ?? config.projectPath;
-      ArbGenerator(outputDir: outputDir, verbose: config.verbose)
-          .generateArbFile(_results);
+      ArbGenerator(outputDirectory: outputDir, verbose: config.verbose)
+          .generateSmartArb(_results);
     }
   }
 
@@ -120,8 +120,15 @@ class LocalizationChecker {
           _results.add(NonLocalizedString(
             filePath: relativePath,
             lineNumber: literal.lineNumber,
+            columnNumber: literal.columnNumber,
             content: literal.content,
             context: _getContext(lines, literal.lineNumber),
+            offset: literal.offset,
+            length: literal.length,
+            variables: literal.variables,
+            parentNode: literal.parentNode,
+            constructorName: literal.constructorName,
+            argumentName: literal.argumentName,
           ));
         }
       }
@@ -132,11 +139,17 @@ class LocalizationChecker {
 
   bool _shouldProcessLiteral(
       StringLiteralInfo literal, List<String> lines, String filePath) {
-    if (stringFilter.shouldSkip(literal.content) ||
-        literal.content.trim().isEmpty) {
+    if (stringFilter.shouldSkip(literal) || literal.content.trim().isEmpty) {
       if (config.verbose)
         print(
             'Skipped (filter or empty): "${literal.content}" in $filePath:${literal.lineNumber}');
+      return false;
+    }
+
+    if (_isCleanArchitectureNonUi(filePath)) {
+      if (config.verbose)
+        print(
+            'Skipped (non-UI architecture layer): "${literal.content}" in $filePath:${literal.lineNumber}');
       return false;
     }
 
@@ -158,6 +171,40 @@ class LocalizationChecker {
     }
 
     return true;
+  }
+
+  /// Determines if a file belongs to a non-UI layer based on Clean Architecture naming
+  bool _isCleanArchitectureNonUi(String filePath) {
+    final lowerPath = filePath.toLowerCase();
+
+    // Core data/domain layers should almost never have UI strings
+    if (lowerPath.contains('/data/') ||
+        lowerPath.contains('/domain/') ||
+        lowerPath.contains('/models/') ||
+        lowerPath.contains('/entities/') ||
+        lowerPath.contains('/repositories/') ||
+        lowerPath.contains('/services/') ||
+        lowerPath.contains('/api/') ||
+        lowerPath.contains('/dto/') ||
+        lowerPath.endsWith('_model.dart') ||
+        lowerPath.endsWith('_entity.dart') ||
+        lowerPath.endsWith('_repository.dart') ||
+        lowerPath.endsWith('_service.dart') ||
+        lowerPath.endsWith('_api.dart')) {
+      return true;
+    }
+
+    // Bloc/Cubit paths are a grey area, but pure business logic should throw typed failures
+    if (lowerPath.contains('/bloc/') ||
+        lowerPath.contains('/cubit/') ||
+        lowerPath.endsWith('_bloc.dart') ||
+        lowerPath.endsWith('_cubit.dart') ||
+        lowerPath.endsWith('_state.dart') ||
+        lowerPath.endsWith('_event.dart')) {
+      return true;
+    }
+
+    return false;
   }
 
   bool _isUiRelated(StringLiteralInfo literal, List<String> contextLines) {
@@ -242,11 +289,19 @@ class LocalizationChecker {
 class ReportGenerator {
   static String generate(List<NonLocalizedString> results) {
     final buffer = StringBuffer();
+    buffer.writeln('🔍 Localization Analysis Results');
+    buffer.writeln('===============================');
     buffer.writeln('Found ${results.length} non-localized strings:\n');
+
     for (var i = 0; i < results.length; i++) {
       final result = results[i];
+      final pattern = _detectPattern(result.context);
+
+      // Enhanced format: [MISSING] "text" → found in file:line pattern
       buffer.writeln(
-          '${i + 1}. ${result.filePath}:${result.lineNumber} - "${result.content}"');
+          '[MISSING] "${result.content}" → found in ${result.filePath}:${result.lineNumber} $pattern');
+
+      // Show context with line numbers
       buffer.writeln('Context:');
       final startLine = result.lineNumber - 2;
       for (var j = 0; j < result.context.length; j++) {
@@ -257,6 +312,63 @@ class ReportGenerator {
       }
       buffer.writeln();
     }
+
+    buffer.writeln('📊 Summary:');
+    buffer.writeln('- Total missing strings: ${results.length}');
+    buffer.writeln(
+        '- Unique patterns detected: ${_getUniquePatterns(results).length}');
+    buffer.writeln(
+        '- Files affected: ${results.map((r) => r.filePath).toSet().length}');
+
     return buffer.toString();
+  }
+
+  /// Enhanced logging for single result
+  static String generateSingleResult(NonLocalizedString result) {
+    final pattern = _detectPattern(result.context);
+    return '[MISSING] "${result.content}" → found in ${result.filePath}:${result.lineNumber} $pattern';
+  }
+
+  /// Detect the UI pattern where the string was found
+  static String _detectPattern(List<String> contextLines) {
+    final patterns = <String, String>{
+      'Text(': 'Text widget',
+      'TextFormField(': 'TextFormField',
+      'AppBar(': 'AppBar title/actions',
+      'SnackBar(': 'SnackBar message',
+      'AlertDialog(': 'AlertDialog content',
+      'ElevatedButton(': 'Button text',
+      'TextButton(': 'Button text',
+      'FloatingActionButton(': 'FAB text',
+      'ListTile(': 'ListTile content',
+      'Tooltip(': 'Tooltip text',
+      'validator:': 'Form validation',
+      'labelText:': 'Input label',
+      'hintText:': 'Input hint',
+      'errorText:': 'Error message',
+      'title:': 'Title property',
+      'subtitle:': 'Subtitle property',
+      'BlocBuilder(': 'Bloc state management',
+      'Consumer(': 'Provider state management',
+      'GetBuilder(': 'GetX state management',
+      'showDialog(': 'Dialog display',
+      'Navigator.': 'Navigation',
+      'context.go(': 'GoRouter navigation',
+    };
+
+    for (final line in contextLines) {
+      for (final entry in patterns.entries) {
+        if (line.contains(entry.key)) {
+          return 'pattern: ${entry.value}';
+        }
+      }
+    }
+
+    return 'pattern: Unknown UI context';
+  }
+
+  /// Get unique patterns from all results
+  static Set<String> _getUniquePatterns(List<NonLocalizedString> results) {
+    return results.map((r) => _detectPattern(r.context)).toSet();
   }
 }

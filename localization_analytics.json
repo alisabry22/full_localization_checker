@@ -1,0 +1,279 @@
+{
+  "timestamp": "2025-07-08T23:26:30.109604",
+  "project_path": "/Users/alisabry/Desktop/code/mine/full_localization_checker",
+  "configuration": {
+    "enhanced_features": {
+      "auto_translation": false,
+      "analytics": false,
+      "code_generation": false,
+      "target_languages": [
+        "es",
+        "fr",
+        "de"
+      ]
+    },
+    "scan_paths": [
+      "/Users/alisabry/Desktop/code/mine/full_localization_checker/lib"
+    ],
+    "custom_ui_patterns": []
+  },
+  "results": {
+    "non_localized_strings": [
+      {
+        "file": "lib/generator/arb_generator.dart",
+        "line": 148,
+        "content": "Text widget",
+        "context": [
+          "    final patterns = <String, String>{",
+          "      'Text(': 'Text widget',",
+          "      'TextFormField(': 'Form field',",
+          "      'AppBar(': 'App bar',"
+        ]
+      },
+      {
+        "file": "lib/generator/arb_generator.dart",
+        "line": 149,
+        "content": "Form field",
+        "context": [
+          "      'Text(': 'Text widget',",
+          "      'TextFormField(': 'Form field',",
+          "      'AppBar(': 'App bar',",
+          "      'SnackBar(': 'Snack bar message',"
+        ]
+      },
+      {
+        "file": "lib/generator/arb_generator.dart",
+        "line": 150,
+        "content": "App bar",
+        "context": [
+          "      'TextFormField(': 'Form field',",
+          "      'AppBar(': 'App bar',",
+          "      'SnackBar(': 'Snack bar message',",
+          "      'AlertDialog(': 'Dialog content',"
+        ]
+      },
+      {
+        "file": "lib/generator/arb_generator.dart",
+        "line": 151,
+        "content": "Snack bar message",
+        "context": [
+          "      'AppBar(': 'App bar',",
+          "      'SnackBar(': 'Snack bar message',",
+          "      'AlertDialog(': 'Dialog content',",
+          "      'ElevatedButton(': 'Button text',"
+        ]
+      },
+      {
+        "file": "lib/generator/arb_generator.dart",
+        "line": 152,
+        "content": "Dialog content",
+        "context": [
+          "      'SnackBar(': 'Snack bar message',",
+          "      'AlertDialog(': 'Dialog content',",
+          "      'ElevatedButton(': 'Button text',",
+          "      'TextButton(': 'Button text',"
+        ]
+      },
+      {
+        "file": "lib/generator/arb_generator.dart",
+        "line": 153,
+        "content": "Button text",
+        "context": [
+          "      'AlertDialog(': 'Dialog content',",
+          "      'ElevatedButton(': 'Button text',",
+          "      'TextButton(': 'Button text',",
+          "      'FloatingActionButton(': 'Floating action button',"
+        ]
+      },
+      {
+        "file": "lib/generator/arb_generator.dart",
+        "line": 154,
+        "content": "Button text",
+        "context": [
+          "      'ElevatedButton(': 'Button text',",
+          "      'TextButton(': 'Button text',",
+          "      'FloatingActionButton(': 'Floating action button',",
+          "      'ListTile(': 'List item',"
+        ]
+      },
+      {
+        "file": "lib/generator/arb_generator.dart",
+        "line": 155,
+        "content": "Floating action button",
+        "context": [
+          "      'TextButton(': 'Button text',",
+          "      'FloatingActionButton(': 'Floating action button',",
+          "      'ListTile(': 'List item',",
+          "      'Tooltip(': 'Tooltip text',"
+        ]
+      },
+      {
+        "file": "lib/generator/arb_generator.dart",
+        "line": 156,
+        "content": "List item",
+        "context": [
+          "      'FloatingActionButton(': 'Floating action button',",
+          "      'ListTile(': 'List item',",
+          "      'Tooltip(': 'Tooltip text',",
+          "      'validator:': 'Form validation message',"
+        ]
+      },
+      {
+        "file": "lib/generator/arb_generator.dart",
+        "line": 157,
+        "content": "Tooltip text",
+        "context": [
+          "      'ListTile(': 'List item',",
+          "      'Tooltip(': 'Tooltip text',",
+          "      'validator:': 'Form validation message',",
+          "      'labelText:': 'Input field label',"
+        ]
+      },
+      {
+        "file": "lib/generator/arb_generator.dart",
+        "line": 158,
+        "content": "Form validation message",
+        "context": [
+          "      'Tooltip(': 'Tooltip text',",
+          "      'validator:': 'Form validation message',",
+          "      'labelText:': 'Input field label',",
+          "      'hintText:': 'Input field hint',"
+        ]
+      },
+      {
+        "file": "lib/generator/arb_generator.dart",
+        "line": 159,
+        "content": "Input field label",
+        "context": [
+          "      'validator:': 'Form validation message',",
+          "      'labelText:': 'Input field label',",
+          "      'hintText:': 'Input field hint',",
+          "      'errorText:': 'Error message',"
+        ]
+      },
+      {
+        "file": "lib/generator/arb_generator.dart",
+        "line": 160,
+        "content": "Input field hint",
+        "context": [
+          "      'labelText:': 'Input field label',",
+          "      'hintText:': 'Input field hint',",
+          "      'errorText:': 'Error message',",
+          "      'title:': 'Title text',"
+        ]
+      },
+      {
+        "file": "lib/generator/arb_generator.dart",
+        "line": 161,
+        "content": "Error message",
+        "context": [
+          "      'hintText:': 'Input field hint',",
+          "      'errorText:': 'Error message',",
+          "      'title:': 'Title text',",
+          "      'subtitle:': 'Subtitle text',"
+        ]
+      },
+      {
+        "file": "lib/generator/arb_generator.dart",
+        "line": 162,
+        "content": "Title text",
+        "context": [
+          "      'errorText:': 'Error message',",
+          "      'title:': 'Title text',",
+          "      'subtitle:': 'Subtitle text',",
+          "    };"
+        ]
+      },
+      {
+        "file": "lib/generator/arb_generator.dart",
+        "line": 163,
+        "content": "Subtitle text",
+        "context": [
+          "      'title:': 'Title text',",
+          "      'subtitle:': 'Subtitle text',",
+          "    };",
+          ""
+        ]
+      },
+      {
+        "file": "lib/automation/code_converter.dart",
+        "line": 222,
+        "content": "Text widget",
+        "context": [
+          "    final patterns = <String, String>{",
+          "      'Text(': 'Text widget',",
+          "      'TextFormField(': 'Form field',",
+          "      'AppBar(': 'App bar',"
+        ]
+      },
+      {
+        "file": "lib/automation/code_converter.dart",
+        "line": 223,
+        "content": "Form field",
+        "context": [
+          "      'Text(': 'Text widget',",
+          "      'TextFormField(': 'Form field',",
+          "      'AppBar(': 'App bar',",
+          "      'SnackBar(': 'Snack bar',"
+        ]
+      },
+      {
+        "file": "lib/automation/code_converter.dart",
+        "line": 224,
+        "content": "App bar",
+        "context": [
+          "      'TextFormField(': 'Form field',",
+          "      'AppBar(': 'App bar',",
+          "      'SnackBar(': 'Snack bar',",
+          "      'AlertDialog(': 'Dialog',"
+        ]
+      },
+      {
+        "file": "lib/automation/code_converter.dart",
+        "line": 225,
+        "content": "Snack bar",
+        "context": [
+          "      'AppBar(': 'App bar',",
+          "      'SnackBar(': 'Snack bar',",
+          "      'AlertDialog(': 'Dialog',",
+          "      'ElevatedButton(': 'Button',"
+        ]
+      },
+      {
+        "file": "lib/automation/code_converter.dart",
+        "line": 230,
+        "content": "List item",
+        "context": [
+          "      'FloatingActionButton(': 'FAB',",
+          "      'ListTile(': 'List item',",
+          "      'Tooltip(': 'Tooltip',",
+          "      'validator:': 'Validation',"
+        ]
+      },
+      {
+        "file": "lib/automation/code_converter.dart",
+        "line": 260,
+        "content": "builder: (context)",
+        "context": [
+          "      '@override',",
+          "      'builder: (context)',",
+          "      'builder: (BuildContext context)',",
+          "      'AlertDialog(',"
+        ]
+      },
+      {
+        "file": "lib/automation/code_converter.dart",
+        "line": 261,
+        "content": "builder: (BuildContext context)",
+        "context": [
+          "      'builder: (context)',",
+          "      'builder: (BuildContext context)',",
+          "      'AlertDialog(',",
+          "      'SimpleDialog(',"
+        ]
+      }
+    ],
+    "analytics": null,
+    "translations": null
+  }
+}
